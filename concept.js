@@ -18,12 +18,32 @@ function handlekeybordbuttonpress(event){
     // check correct or not
     if(playerpressed===exceptalpha){
         console.log('you are get a point');
-        console.log('you have pressed courectly', exceptalpha);
+        // update the game score
+        // 1.get the current score
+        
+        const currentscoreelement = document.getElementById('current-score');
+        const currentscoretext = currentscoreelement.innerText;
+        const currentscore = parseInt(currentscoretext);
+        console.log(currentscore);
+        // 2.increse the score by 1
+        const newscore = currentscore + 1;
+        // 3.so the upadted score
+        currentscoreelement.innerText = newscore;
+        // start a new round
         removebackgroundbyid(exceptalpha);
         continuegame();
     }
     else{
         console.log('you lost 1 point')
+        // 1.get the current score number 
+        const currentlifeelement = document.getElementById('life-point');
+        const currentlifetext = currentlifeelement.innerText;
+        const currentlife = parseInt(currentlifetext);
+        // 2.reduced the life count
+        const newlife = currentlife - 1;
+
+        // 3.upate the life point
+        currentlifeelement.innerText = newlife;
     }
 }
 document.addEventListener('keyup', handlekeybordbuttonpress)
